@@ -1,7 +1,7 @@
 package pl.com.movies;
 
 import java.time.LocalDate;
-import java.util.Map;
+import java.util.Objects;
 
 public class Movie {
     private String tytulFilmu;
@@ -9,11 +9,14 @@ public class Movie {
     private LocalDate data;
     private String rezyser;
 
-    public Movie(String tytulFilmu, MovieType movieType, LocalDate data, String nazwiskoAutora) {
+    public Movie(String tytulFilmu, MovieType movieType, LocalDate data, String rezyser) {
         this.tytulFilmu = tytulFilmu;
         this.movieType = movieType;
         this.data = data;
         this.rezyser = rezyser;
+    }
+
+    public Movie() {
     }
 
     public String getTytulFilmu() {
@@ -44,8 +47,16 @@ public class Movie {
         return rezyser;
     }
 
-    public void setRezyser(String nazwiskoAutora) {
+    public void setRezyser(String rezyser) {
         this.rezyser = rezyser;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return Objects.equals(tytulFilmu, movie.tytulFilmu);
     }
 
     @Override
@@ -56,5 +67,10 @@ public class Movie {
                 ", data=" + data +
                 ", rezyser='" + rezyser + '\'' +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tytulFilmu);
     }
 }
