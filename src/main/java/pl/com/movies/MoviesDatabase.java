@@ -2,19 +2,41 @@ package pl.com.movies;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MoviesDatabase {
 
     Map<String, Movie> movieHashMap = new HashMap<>();
 
     public void addMovie(String tytulFilmu, MovieType movieType, LocalDate data, String rezyser) {
-        Movie film=new Movie(tytulFilmu, movieType, data, rezyser);
-        movieHashMap.put(tytulFilmu,film);
+        Movie film = new Movie(tytulFilmu, movieType, data, rezyser);
+        movieHashMap.put(tytulFilmu, film);
     }
 
-    public void wyszukajFilm(String tytul) {
-        Movie film = movieHashMap.get(tytul);
-        System.out.println("Film: "+film);
+    public Optional<Movie> wyszukajFilm(String nazwaFilmu) {
+        Movie film = movieHashMap.get(nazwaFilmu);
+        // jeśli zastosujemy Optional.of, to rzuci nam NullPointerException jeśli nie znajdzie elementu
+        return Optional.ofNullable(film);
+    }
+
+    public void printAllMovie() {
+        for (Movie f : movieHashMap.values()) {
+            System.out.println(f);
+        }
+    }
+
+    public List<Movie> znajdzFilmyTypu(MovieType typ) {
+//        List<Movie> filmy = new ArrayList<>();
+//
+//        for (Movie film : filmy.values()) {
+//            if(film.getType() == typ){
+//                filmy.add(film);
+//            }
+//        }
+//        return filmy;
+        return movieHashMap.values().stream()
+                .filter(film -> film.getMovieType() == typ)
+                .collect(Collectors.toList());
     }
 }
 
