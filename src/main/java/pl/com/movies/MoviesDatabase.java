@@ -1,27 +1,20 @@
 package pl.com.movies;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class MoviesDatabase {
 
-    Map<String, List<Movie>> movieHashMap = new HashMap<>();
+    Map<String, Movie> movieHashMap = new HashMap<>();
 
-    public void addMovie(Movie m) {
-        if (movieHashMap.keySet().contains(m.getTytulFilmu())) {
-            movieHashMap.get(m.getTytulFilmu()).add(m);
-        } else {
-            movieHashMap.put(m.getTytulFilmu(), new ArrayList<>());
-            movieHashMap.get(m.getTytulFilmu()).add(m);
-
-        }
+    public void addMovie(String tytulFilmu, MovieType movieType, LocalDate data, String rezyser) {
+        Movie film=new Movie(tytulFilmu, movieType, data, rezyser);
+        movieHashMap.put(tytulFilmu,film);
     }
 
-    public void wyszukajFilm(Movie m) {
-        if (movieHashMap.entrySet().equals(m.getTytulFilmu())) {
-            System.out.println("Znaleziono Film:" + movieHashMap.get(m.getTytulFilmu()));
-        } else {
-            System.out.println("Nie znaleziono");
-        }
+    public void wyszukajFilm(String tytul) {
+        Movie film = movieHashMap.get(tytul);
+        System.out.println("Film: "+film);
     }
 }
 
