@@ -1,4 +1,7 @@
-package pl.com.movies;
+package pl.com;
+
+import pl.com.movies.MovieType;
+import pl.com.movies.MoviesDatabase;
 
 import java.time.LocalDate;
 

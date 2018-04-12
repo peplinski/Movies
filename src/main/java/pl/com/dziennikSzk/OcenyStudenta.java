@@ -1,4 +1,4 @@
-package pl.com.movies.dziennikSzk;
+package pl.com.dziennikSzk;
 
 import java.util.ArrayList;
 import java.util.HashMap;

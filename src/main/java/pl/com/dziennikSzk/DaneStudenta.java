@@ -1,4 +1,4 @@
-package pl.com.movies.dziennikSzk;
+package pl.com.dziennikSzk;
 
 public class DaneStudenta {
     private String imie;

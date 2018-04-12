@@ -1,6 +1,4 @@
-package pl.com.movies.dziennikSzk;
-
-import com.sun.javafx.collections.MappingChange;
+package pl.com.dziennikSzk;
 
 public class Main {
     public static void main(String[] args) {
